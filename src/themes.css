@@ -1,0 +1,159 @@
+/* Full-page background and layout */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* Clean, readable font */
+  background-color: #f5f5f5; /* Default background color */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.header {
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.difficulty-selector {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.difficulty-selector select {
+  font-size: 1em;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Responsive grid layout */
+  gap: 15px; /* Space between cards */
+  justify-content: center; /* Center the grid on the page */
+  padding: 20px; /* Padding around the board */
+  border-radius: 15px; /* Rounded corners for the board */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  background-color: var(--card-background); /* Card background color based on theme */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.card {
+  width: 120px; /* Fixed width for cards */
+  height: 120px; /* Fixed height for cards */
+  border: 2px solid #ddd; /* Light gray border for cards */
+  border-radius: 10px; /* Slightly rounded corners for cards */
+  overflow: hidden; /* Hide overflow of the image */
+  cursor: pointer; /* Pointer cursor to indicate clickable */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-background); /* Card background color based on theme */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.card-image {
+  width: 100%; /* Fit image to card width */
+  height: 100%; /* Fit image to card height */
+  object-fit: contain; /* Ensure the entire image is visible */
+  transition: opacity 0.3s ease; /* Smooth transition for image visibility */
+}
+
+.card.flipped .card-image {
+  opacity: 1; /* Fully visible when card is flipped */
+}
+
+.card:not(.flipped) .card-image {
+  opacity: 0; /* Hide image when card is not flipped */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slightly enlarge card on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.timer, .score {
+  font-size: 1.2em; /* Larger font size for visibility */
+  margin-bottom: 10px; /* Margin below timer and score */
+}
+
+.victory-popup, .game-over-popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  color: var(--text-color);
+  text-align: center;
+  z-index: 1000;
+  display: none;
+}
+
+.victory-popup.show, .game-over-popup.show {
+  display: block;
+}
+
+.victory-popup {
+  border: 2px solid #4caf50; /* Green border for victory */
+}
+
+.game-over-popup {
+  border: 2px solid #f44336; /* Red border for game over */
+}
+
+/* Theme-specific styles */
+.animal-theme {
+  --background-color: #e0f7fa; /* Light cyan background for animal theme */
+  --card-background: #b2dfdb; /* Light teal for cards */
+  --text-color: #004d40; /* Dark teal for text */
+}
+
+.fruit-theme {
+  --background-color: #fff8e1; /* Light yellow background for fruit theme */
+  --card-background: #f1f8e9; /* Light green for cards */
+  --text-color: #c2185b; /* Dark pink for text */
+}
+
+.transport-theme {
+  --background-color: #e3f2fd; /* Light blue background for transport theme */
+  --card-background: #bbdefb; /* Light blue for cards */
+  --text-color: #1976d2; /* Dark blue for text */
+}
+
+/* Difficulty styles */
+.easy-theme {
+  --card-background: #d0f0c0; /* Lighter card background for easy difficulty */
+}
+
+.medium-theme {
+  --card-background: #f0f0c0; /* Medium card background for medium difficulty */
+}
+
+.hard-theme {
+  --card-background: #f0d0c0; /* Darker card background for hard difficulty */
+}

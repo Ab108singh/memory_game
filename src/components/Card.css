@@ -1,0 +1,45 @@
+.card {
+  width: 120px; /* Set a fixed width for the card */
+  height: 120px; /* Set a fixed height for the card */
+  border: 2px solid #ddd; /* Light gray border */
+  border-radius: 12px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow of the image */
+  cursor: pointer; /* Pointer cursor to indicate clickable */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0; /* Light background color for unflipped cards */
+  transition: transform 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.card-image {
+  width: 100%; /* Fit image to card width */
+  height: 100%; /* Fit image to card height */
+  object-fit: contain; /* Ensure the entire image is visible */
+  transition: opacity 0.3s ease; /* Smooth transition for image visibility */
+}
+
+.card.flipped .card-image {
+  opacity: 1; /* Fully visible when card is flipped */
+}
+
+.card:not(.flipped) .card-image {
+  opacity: 0; /* Hide image when card is not flipped */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slightly enlarge card on hover */
+  border-color: #0056b3; /* Darker border color on hover */
+}
+.card-back {
+  width: 100%;
+  height: 100%;
+  background-color: #757575;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
