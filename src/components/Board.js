@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Card from './Card';
 import './Board.css';
 import { generateDeck } from './deckUtils';
@@ -7,7 +7,6 @@ const Board = ({ theme, difficulty, onVictory, onGameOver }) => {
   const [deck, setDeck] = useState(() => generateDeck(theme, difficulty));
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedPairs, setMatchedPairs] = useState([]);
-  const [moves, setMoves] = useState(0);
   const [timeLeft, setTimeLeft] = useState(60);
   const [gameOver, setGameOver] = useState(false);
 
@@ -33,7 +32,6 @@ const Board = ({ theme, difficulty, onVictory, onGameOver }) => {
       } else {
         setTimeout(() => setFlippedCards([]), 1000);
       }
-      setMoves((prev) => prev + 1);
     }
   }, [flippedCards, deck, matchedPairs.length, onVictory, timeLeft]);
 
@@ -51,7 +49,6 @@ const Board = ({ theme, difficulty, onVictory, onGameOver }) => {
     setDeck(generateDeck(theme, difficulty));
     setFlippedCards([]);
     setMatchedPairs([]);
-    setMoves(0);
     setTimeLeft(60);
     setGameOver(false);
   }, [theme, difficulty]);
